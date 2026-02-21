@@ -9,6 +9,8 @@ import OurClient from "@/components/about/OurClient";
 import ContactInfo from "@/components/contact/ContactInfo";
 import Map from "@/components/contact/Map";
 import Contact from "@/components/contact/Contact";
+import CareerInfo from "@/components/career/CareerInfo";
+import CareerForm from "@/components/career/CareerForm";
 import ProjectLists from "@/components/project/ProjectLists";
 import { notFound } from "next/navigation";
 
@@ -47,6 +49,8 @@ const componentMap = {
     'contact_info': ContactInfo,
     'map': Map,
     'get_in_touch' : Contact,
+    'career_info' : CareerInfo,
+    'career_form' : CareerForm,
 };
 
 export default async function Page({ params }) {
@@ -60,8 +64,6 @@ export default async function Page({ params }) {
         return notFound();
     }
 
-    //job, news, industries list
-    const jobs = getPageData?.jobs || [];
     const projects =  getPageData?.projects || [];
 
 

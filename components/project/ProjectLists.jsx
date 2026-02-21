@@ -5,6 +5,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Select, { components } from "react-select";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import ProjectBox from "@/components/project/ProjectBox";
+import Button from "@/components/Button";
 import {primary} from "@/styles/globalStyleVars";
 
 // Separate component that uses useSearchParams
@@ -15,6 +16,8 @@ function ProjectListsContent({ data }) {
 
     const [selectedStatus, setSelectedStatus] = useState(searchParams.get('status') || 'all');
     const [selectedType, setSelectedType] = useState(searchParams.get('type') || 'all');
+    const [itemsToShow, setItemsToShow] = useState(9);
+    const itemsPerLoad = 3;
 
     // Get unique statuses
     const uniqueStatuses = useMemo(() => {
@@ -89,6 +92,13 @@ function ProjectListsContent({ data }) {
         setSelectedStatus(statusParam);
         setSelectedType(typeParam);
     }, [searchParams]);
+
+    const handleLoadMore = () => {
+        setItemsToShow(prev => prev + itemsPerLoad);
+    };
+
+    // Display only the items that should be shown
+    const displayedProjects = filteredProjects.slice(0, itemsToShow);
 
     // Custom dropdown styles
     const customStyles = {
@@ -181,7 +191,7 @@ function ProjectListsContent({ data }) {
                 </Row>
                 <Row className={'listing'}>
                     {filteredProjects.length > 0 ? (
-                        filteredProjects.map((item, index) => (
+                        displayedProjects.map((item, index) => (
                             <Col md={4} key={index}>
                                 <ProjectBox
                                     link={`/project/${item?.product_data?.slug}`}
@@ -199,6 +209,22 @@ function ProjectListsContent({ data }) {
                         </Col>
                     )}
                 </Row>
+                {filteredProjects.length > itemsToShow && (
+                    <Row className={'load-more-row'}>
+                        <Col className={'load-more-col'}>
+                            <Button
+                                text="Load More"
+                                onClick={handleLoadMore}
+                                background={primary}
+                                color="#FFF"
+                                hoverBackground="#FFF"
+                                hoverColor={primary}
+                                hoverBorder={primary}
+                                border={`1px solid ${primary}`}
+                            />
+                        </Col>
+                    </Row>
+                )}
             </Container>
         </StyledComponent>
     );
@@ -270,6 +296,15 @@ const StyledComponent = styled.section`
         margin: 0;
         font-weight: 500;
       }
+    }
+  }
+
+  .load-more-row {
+    margin-top: 60px;
+    .load-more-col {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 `;

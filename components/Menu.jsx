@@ -264,20 +264,20 @@ const MyComponent = () => {
                     <Accordion>
                         <li className={pathname === '/' ? 'active' : ''}><Link href={'/'}>Home</Link></li>
                         <li className={pathname === '/about' ? 'active' : ''}><Link href={'/about'}>About</Link></li>
-
-                        <Accordion.Item
-                            className={pathname.startsWith('/project') ? 'active' : ''}
-                            eventKey="1">
-                            <Accordion.Header><span>Projects</span> <img src="/images/static/caret-down.svg"
-                                                                         alt=""/></Accordion.Header>
-                            <Accordion.Body>
-                                <ul>
-                                    <li><Link href="/projects?status=ongoing"><h5>Ongoing Projects</h5></Link></li>
-                                    <li><Link href="/projects?status=completed"><h5>Completed Projects</h5></Link></li>
-                                    <li><Link href="/projects?status=planned"><h5>Planned Projects</h5></Link></li>
-                                </ul>
-                            </Accordion.Body>
-                        </Accordion.Item>
+                        <li className={pathname.startsWith('/project') ? 'active' : ''}><Link href={'/projects'}>Projects</Link></li>
+                        {/*<Accordion.Item*/}
+                        {/*    className={pathname.startsWith('/project') ? 'active' : ''}*/}
+                        {/*    eventKey="1">*/}
+                        {/*    <Accordion.Header><span>Projects</span> <img src="/images/static/caret-down.svg"*/}
+                        {/*                                                 alt=""/></Accordion.Header>*/}
+                        {/*    <Accordion.Body>*/}
+                        {/*        <ul>*/}
+                        {/*            <li><Link href="/projects?status=ongoing"><h5>Ongoing Projects</h5></Link></li>*/}
+                        {/*            <li><Link href="/projects?status=completed"><h5>Completed Projects</h5></Link></li>*/}
+                        {/*            <li><Link href="/projects?status=planned"><h5>Planned Projects</h5></Link></li>*/}
+                        {/*        </ul>*/}
+                        {/*    </Accordion.Body>*/}
+                        {/*</Accordion.Item>*/}
                         <li className={pathname === '/career' ? 'active' : ''}><Link
                             href={'/career'}>Career</Link></li>
                         <li className={pathname === '/contact' ? 'active' : ''}><Link

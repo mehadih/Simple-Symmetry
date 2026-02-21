@@ -145,7 +145,7 @@ const MyComponent = ({data }) => {
                                     <p className={"form-error"}>{errors.message?.message}</p>
                                 </Form.Group>
                                 <div className={"submit-btn"} onClick={handleSubmit(onSubmit)}>
-                                    <Button text={'Submit'} color={'#FFFFFF'} background={primary} border={'1px'} hoverColor={'#56575A'} hoverBackground={'#FFFFFF'} hoverBorder={primary} borderColor={primary} href={'tel:16677'}/>
+                                    <Button text={'Submit'} color={'#FFFFFF'} background={primary} border={'1px'} hoverColor={'#56575A'} hoverBackground={'#FFFFFF'} hoverBorder={primary} borderColor={primary}/>
                                 </div>
                             </Form>
                         </Col>
